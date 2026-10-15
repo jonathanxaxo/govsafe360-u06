@@ -1,4 +1,4 @@
-// Marco 7: versão integrada ao GitHub com validação automática de qualidade.
+// Marco 8: versão preparada para Preview Vercel com build estático reproduzível.
 const initialScenarios = [
   { id: 'S01', title: 'Resumir relatório público fictício', data: 'Público', env: 'Desenvolvimento', autonomy: 'Leitura' },
   { id: 'S02', title: 'Analisar planilha interna simulada', data: 'Interno', env: 'Homologação', autonomy: 'Proposta' },
@@ -267,4 +267,4 @@ clearAuditButton.addEventListener('click', () => {
 
 render();
 renderAudit();
-console.info('GOVSAFE 360 · Marco 7 carregado com GitHub e integração contínua de qualidade.');
+console.info('GOVSAFE 360 · Marco 8 carregado em build estático de Preview.');

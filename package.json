@@ -4,12 +4,14 @@
   "type": "module",
   "scripts": {
     "dev": "node scripts/servidor-local.mjs",
-    "check:js": "node --check js/politica.js && node --check js/cenarios.js && node --check js/auditoria.js && node --check js/app.js && node --check scripts/testar-politica.mjs && node --check scripts/testar-cenarios.mjs && node --check scripts/testar-auditoria.mjs && node --check scripts/testar-qualidade.mjs",
+    "build": "node scripts/sincronizar-publicacao.mjs",
+    "check:sync": "node scripts/verificar-sincronia.mjs",
+    "check:js": "node --check js/politica.js && node --check js/cenarios.js && node --check js/auditoria.js && node --check js/app.js && node --check scripts/sincronizar-publicacao.mjs && node --check scripts/verificar-sincronia.mjs && node --check scripts/testar-politica.mjs && node --check scripts/testar-cenarios.mjs && node --check scripts/testar-auditoria.mjs && node --check scripts/testar-qualidade.mjs",
     "test:policy": "node scripts/testar-politica.mjs",
     "test:scenarios": "node scripts/testar-cenarios.mjs",
     "test:audit": "node scripts/testar-auditoria.mjs",
     "test:quality": "node scripts/testar-qualidade.mjs",
-    "quality": "npm run check:js && npm run test:policy && npm run test:scenarios && npm run test:audit && npm run test:quality"
+    "quality": "npm run check:js && npm run build && npm run check:sync && npm run test:policy && npm run test:scenarios && npm run test:audit && npm run test:quality"
   },
   "engines": {
     "node": ">=20.11.0"

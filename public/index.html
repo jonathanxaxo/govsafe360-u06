@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Protótipo didático GOVSAFE 360 com dados inteiramente fictícios.">
+  <title>GOVSAFE 360 · Marco 8</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Navegação principal">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">✦</span>
+        <div>
+          <strong>GOVSAFE 360</strong>
+          <small>Laboratório didático</small>
+        </div>
+      </div>
+
+      <nav>
+        <a class="nav-link active" href="#visao-geral">Visão geral</a>
+        <a class="nav-link" href="#cadastro">Novo cenário</a>
+        <a class="nav-link" href="#cenarios">Cenários fictícios</a>
+        <a class="nav-link" href="#revisao">Revisão e auditoria</a>
+        <a class="nav-link" href="#limites">Limites do piloto</a>
+      </nav>
+
+      <p class="sidebar-note">Unidade VI · Marco 8<br>Governança antes da autonomia</p>
+    </aside>
+
+    <main id="conteudo">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">SEMA/MT · FORMAÇÃO CLAUDE CODE</p>
+          <h1>Da autonomia à responsabilidade.</h1>
+          <p class="hero-text">Painel inicial para visualizar cenários fictícios de uso de agentes de IA.</p>
+        </div>
+        <span class="stage-badge">Marco 8 · Vercel Preview</span>
+      </header>
+
+      <div class="notice" role="note">
+        <strong>Protótipo didático.</strong> Não é um sistema institucional homologado. Não insira dados pessoais, credenciais, documentos restritos ou informações reais da SEMA/MT.
+      </div>
+
+      <section id="visao-geral" aria-labelledby="titulo-visao">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Visão geral</p>
+            <h2 id="titulo-visao">Painel de governança</h2>
+          </div>
+          <p>Dados sintéticos desta demonstração</p>
+        </div>
+
+        <div class="kpi-grid" aria-label="Indicadores do painel">
+          <article class="kpi-card">
+            <span>Total de cenários</span>
+            <strong id="total-cenarios">8</strong>
+            <small>Base inicial do exercício</small>
+          </article>
+          <article class="kpi-card allowed">
+            <span>Permitidos</span>
+            <strong id="total-permitidos">0</strong>
+            <small>Uso didático supervisionado</small>
+          </article>
+          <article class="kpi-card conditional">
+            <span>Exigem condições</span>
+            <strong id="total-condicionados">0</strong>
+            <small>Revisão e controles prévios</small>
+          </article>
+          <article class="kpi-card denied">
+            <span>Não autorizados</span>
+            <strong id="total-nao-autorizados">0</strong>
+            <small>Risco incompatível com o piloto</small>
+          </article>
+        </div>
+      </section>
+
+      <section id="cadastro" class="panel" aria-labelledby="titulo-cadastro">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Cadastro local</p>
+            <h2 id="titulo-cadastro">Adicionar cenário sintético</h2>
+          </div>
+          <p>Salvo somente neste navegador</p>
+        </div>
+        <form id="cenario-form" class="scenario-form">
+          <label class="field field-wide">Finalidade fictícia
+            <input name="title" type="text" required maxlength="120" autocomplete="off" placeholder="Ex.: Resumir indicador público fictício">
+          </label>
+          <label class="field">Tipo de dado
+            <select name="data" required>
+              <option value="Público">Público</option>
+              <option value="Interno">Interno</option>
+              <option value="Pessoal">Pessoal</option>
+              <option value="Credencial">Credencial</option>
+              <option value="Externo">Externo</option>
+            </select>
+          </label>
+          <label class="field">Ambiente
+            <select name="env" required>
+              <option value="Desenvolvimento">Desenvolvimento</option>
+              <option value="Homologação">Homologação</option>
+              <option value="Produção">Produção</option>
+            </select>
+          </label>
+          <label class="field">Autonomia
+            <select name="autonomy" required>
+              <option value="Leitura">Leitura</option>
+              <option value="Proposta">Proposta</option>
+              <option value="Edição">Edição</option>
+              <option value="Execução">Execução</option>
+              <option value="Crítica">Crítica</option>
+            </select>
+          </label>
+          <label class="field field-wide">Justificativa didática
+            <textarea name="justification" required maxlength="500" rows="3" placeholder="Explique por que este cenário fictício deve ser analisado."></textarea>
+          </label>
+          <label class="synthetic-check field-wide">
+            <input name="synthetic" type="checkbox" value="sim" required>
+            Confirmo que este cadastro contém somente informações fictícias, sem dados pessoais, credenciais ou documentos reais.
+          </label>
+          <div class="form-actions field-wide">
+            <button class="primary-button" type="submit">Cadastrar cenário</button>
+            <button id="limpar-cadastros" class="secondary-button" type="button">Apagar cenários locais</button>
+            <span class="review-note">Revisão humana simulada disponível na seção de auditoria.</span>
+          </div>
+        </form>
+        <p id="form-feedback" class="feedback" role="status" aria-live="polite"></p>
+      </section>
+
+      <section id="cenarios" class="panel" aria-labelledby="titulo-cenarios">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Matriz inicial</p>
+            <h2 id="titulo-cenarios">Oito cenários fictícios</h2>
+          </div>
+          <p>Classificações calculadas pelas regras didáticas R1–R5</p>
+        </div>
+
+        <div class="filters" aria-label="Busca e filtros de cenários">
+          <label class="field field-search">Buscar
+            <input id="busca" type="search" autocomplete="off" placeholder="Finalidade ou justificativa">
+          </label>
+          <label class="field">Decisão
+            <select id="filtro-status">
+              <option value="">Todas</option>
+              <option value="permitido">Permitido</option>
+              <option value="condicionado">Exige condições</option>
+              <option value="nao-autorizado">Não autorizado</option>
+            </select>
+          </label>
+          <label class="field">Tipo de dado
+            <select id="filtro-dados">
+              <option value="">Todos</option>
+              <option value="publico">Público</option>
+              <option value="interno">Interno</option>
+              <option value="pessoal">Pessoal</option>
+              <option value="credencial">Credencial</option>
+              <option value="externo">Externo</option>
+            </select>
+          </label>
+          <button id="limpar-filtros" class="secondary-button" type="button">Limpar filtros</button>
+        </div>
+        <p id="resumo-resultados" class="result-summary" aria-live="polite"></p>
+
+        <div class="table-wrap" tabindex="0" aria-label="Tabela rolável de cenários fictícios">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Cenário</th>
+                <th scope="col">Dados</th>
+                <th scope="col">Ambiente</th>
+                <th scope="col">Autonomia</th>
+                <th scope="col">Situação didática</th>
+              </tr>
+            </thead>
+            <tbody id="cenario-rows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="revisao" class="panel" aria-labelledby="titulo-revisao">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Controle humano simulado</p>
+            <h2 id="titulo-revisao">Revisão e auditoria local</h2>
+          </div>
+          <p>A classificação da política nunca é alterada</p>
+        </div>
+        <form id="review-form" class="scenario-form">
+          <label class="field field-wide">Cenário
+            <select id="review-scenario" name="scenario" required></select>
+          </label>
+          <label class="field">Decisão humana simulada
+            <select name="humanDecision" required>
+              <option value="aprovado">Aprovar uso simulado</option>
+              <option value="rejeitado">Rejeitar uso simulado</option>
+            </select>
+          </label>
+          <label class="field field-wide">Justificativa da revisão
+            <textarea name="reviewJustification" required maxlength="500" rows="3" placeholder="Registre a justificativa da decisão humana simulada."></textarea>
+          </label>
+          <div class="form-actions field-wide">
+            <button class="primary-button" type="submit">Registrar revisão</button>
+            <span class="review-note">Cenários não autorizados nunca podem ser aprovados.</span>
+          </div>
+        </form>
+        <p id="review-feedback" class="feedback" role="status" aria-live="polite"></p>
+
+        <div class="audit-actions">
+          <button id="export-csv" class="secondary-button" type="button">Exportar matriz CSV</button>
+          <button id="export-json" class="secondary-button" type="button">Exportar auditoria JSON</button>
+          <button id="clear-audit" class="secondary-button" type="button">Apagar auditoria local</button>
+        </div>
+        <div class="audit-history" aria-labelledby="titulo-historico">
+          <h3 id="titulo-historico">Histórico auditável local</h3>
+          <ol id="audit-list"></ol>
+          <p id="audit-empty" class="empty-audit">Nenhuma revisão foi registrada neste navegador.</p>
+        </div>
+      </section>
+
+      <section id="limites" class="panel limits" aria-labelledby="titulo-limites">
+        <div>
+          <p class="section-kicker">Limites do Marco 8</p>
+          <h2 id="titulo-limites">O que esta versão faz — e o que ainda não faz</h2>
+        </div>
+        <div class="limit-grid">
+          <article>
+            <h3>Disponível agora</h3>
+            <ul>
+              <li>Navegação por seções.</li>
+              <li>Dashboard responsivo.</li>
+              <li>Oito cenários exclusivamente fictícios.</li>
+              <li>Motor de decisão único e testado automaticamente.</li>
+              <li>Cadastro sintético, busca, filtros e persistência local.</li>
+              <li>Revisão humana simulada, auditoria e exportações.</li>
+              <li>Testes reproduzíveis de qualidade, segurança básica, acessibilidade e funcionamento offline.</li>
+              <li>Histórico Git local em branch principal protegida por validação prévia.</li>
+              <li>Repositório GitHub e integração contínua de qualidade.</li>
+              <li>Build estático reproduzível e implantação de Preview na Vercel.</li>
+            </ul>
+          </article>
+          <article>
+            <h3>Próximos marcos</h3>
+            <ul>
+              <li>MCP, CI e publicação.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <footer>GOVSAFE 360 · Demonstração educacional · Somente dados fictícios</footer>
+    </main>
+  </div>
+
+  <script src="js/politica.js"></script>
+  <script src="js/cenarios.js"></script>
+  <script src="js/auditoria.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
