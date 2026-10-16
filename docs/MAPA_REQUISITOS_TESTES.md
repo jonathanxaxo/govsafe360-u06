@@ -13,6 +13,7 @@
 | R09 Oito cenários sintéticos | `js/app.js` | `test:scenarios` e `test:quality` |
 | R10 Aviso ostensivo de protótipo | `index.html` | `test:quality` e validação visual M9 |
 | Publicação Preview | `scripts/*`, `vercel.json` | `build`, `check:sync` e evidência M8 |
+| Publicação em produção | `vercel.json`, `docs/PRODUCAO_M10.md` | `test:m10`, CI e validação visual M10 |
 | Integração contínua | `.github/workflows/qualidade.yml` | GitHub Actions aprovado no M7/M8 |
 
-Relatórios: `docs/EVIDENCIAS_M5.md`, `docs/VERCEL_PREVIEW_M8.md` e `docs/VALIDACAO_M9.md`. Rotina completa: `npm run quality`.
+Relatórios: `docs/EVIDENCIAS_M5.md`, `docs/VERCEL_PREVIEW_M8.md`, `docs/VALIDACAO_M9.md` e `docs/PRODUCAO_M10.md`. Rotina completa: `npm run quality`.
