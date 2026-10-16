@@ -2,15 +2,17 @@
 
 | Requisito | Código/fonte | Evidência |
 |---|---|---|
-| REQ01 Dashboard | `index.html`, `js/app.js` | Testes de qualidade e validação visual M5 |
-| REQ02 Busca | `js/app.js` | Teste 02 |
-| REQ03 Filtro decisão | `js/app.js` | Teste 03 |
-| REQ04 Cadastro e persistência | `js/app.js`, localStorage | Teste 04 |
-| REQ05 Aprovação humana condicionada | `js/app.js`, `js/politica.js` | Teste 05 e política |
-| REQ06 Exportações | `js/app.js` | Teste 06 |
-| REQ07 Responsividade | `css/styles.css` | `test:quality` e viewport de 390 px |
-| REQ08 Produção sem execução autônoma | `js/politica.js` | Teste 08 e paridade MCP |
-| REQ09 Build Vercel | `scripts/*`, `vercel.json` | `npm run build`, `check:sync` |
-| REQ10 CI | `.github/workflows/qualidade.yml` | Pendente de marco próprio; não implementado no M5 autorizado |
+| R01 Dashboard | `index.html`, `js/app.js` | `test:scenarios`, `test:quality` e validação visual M9 |
+| R02 Formulário completo | `index.html`, `js/app.js` | `test:scenarios` e validação funcional M9 |
+| R03 Motor conservador e explicável | `js/politica.js` | `test:policy` |
+| R04 Revisão humana simulada | `js/app.js`, `js/auditoria.js` | `test:audit` |
+| R05 Histórico auditável local | `js/auditoria.js` | `test:audit` |
+| R06 Exportações CSV e JSON | `js/auditoria.js` | `test:audit` |
+| R07 Responsividade e acessibilidade | `index.html`, `css/styles.css` | `test:quality` e inspeção em 390 px no M9 |
+| R08 Funcionamento offline | fontes locais e `scripts/*` | `test:quality`, `build` e `check:sync` |
+| R09 Oito cenários sintéticos | `js/app.js` | `test:scenarios` e `test:quality` |
+| R10 Aviso ostensivo de protótipo | `index.html` | `test:quality` e validação visual M9 |
+| Publicação Preview | `scripts/*`, `vercel.json` | `build`, `check:sync` e evidência M8 |
+| Integração contínua | `.github/workflows/qualidade.yml` | GitHub Actions aprovado no M7/M8 |
 
-Relatório local: `docs/EVIDENCIAS_M5.md`. Rotina completa: `npm run quality`.
+Relatórios: `docs/EVIDENCIAS_M5.md`, `docs/VERCEL_PREVIEW_M8.md` e `docs/VALIDACAO_M9.md`. Rotina completa: `npm run quality`.

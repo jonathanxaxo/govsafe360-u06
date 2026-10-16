@@ -2,7 +2,7 @@
 
 Protótipo de governança com dados 100% inventados; **não é política institucional homologada**. Site estático, HTML/CSS/JavaScript sem backend, autenticação, banco remoto ou cobrança. Quando publicado na Vercel, o **código do site é acessível pela URL**; cada navegador mantém seu `localStorage` local e separado.
 
-## Situação atual — Marco 7
+## Situação atual — Marco 9
 
 O projeto foi construído progressivamente nos marcos autorizados e atualmente possui:
 
@@ -15,6 +15,8 @@ O projeto foi construído progressivamente nos marcos autorizados e atualmente p
 - testes automatizados de qualidade;
 - histórico Git local;
 - repositório GitHub e integração contínua.
+- build estático e Preview protegido na Vercel;
+- validação formal de requisitos, critérios de aceite, responsividade, acessibilidade e segurança básica.
 
 Para validar a versão atual:
 
@@ -22,7 +24,7 @@ Para validar a versão atual:
 npm run quality
 ```
 
-Consulte também `docs/CRITERIOS_ACEITE.md`, `docs/EVIDENCIAS_M5.md`, `docs/HISTORICO_GIT_M6.md` e `docs/GITHUB_CI_M7.md`.
+Consulte também `docs/CRITERIOS_ACEITE.md`, `docs/EVIDENCIAS_M5.md`, `docs/HISTORICO_GIT_M6.md`, `docs/GITHUB_CI_M7.md`, `docs/VERCEL_PREVIEW_M8.md` e `docs/VALIDACAO_M9.md`.
 
 ## Usar offline
 
@@ -32,7 +34,7 @@ Extraia a pasta, abra `index.html` no navegador, teste oito cenários, crie um c
 
 Git local instalado previamente, Node >=20.11 e conta GitHub/Vercel são pré-requisitos da aula completa. No Claude Code, leia `CLAUDE.md`, `docs/REQUISITOS.md`, `docs/REGRAS_GOVERNANCA.md` e `README_PUBLICACAO.md`.
 
-O Claude **pode sugerir e executar** operações Git, npm, Vercel e Playwright quando autorizado. Não recebe credenciais por prompt. Envie repositório ao GitHub com aprovação, execute `npm run build` e `npm run check:sync`, importe na Vercel, e **teste a URL de produção ANTES** de abrir nova branch de melhoria.
+O Claude **pode sugerir e executar** operações Git, npm, Vercel e navegador quando autorizado. Não recebe credenciais por prompt. Envie o repositório ao GitHub com aprovação, execute `npm run quality` e valide uma implantação Preview. A publicação em produção pertence exclusivamente ao M10 e exige autorização específica.
 
 Os arquivos-fonte são `index.html`, `css/styles.css`, `js/app.js` e `js/politica.js`. A pasta `public/` é cópia gerada por `npm run build`. Não altere `public/` diretamente. O MCP local **não** será implantado pela Vercel.
 
@@ -46,7 +48,7 @@ npm run quality
 
 O material original do curso também prevê a sequência `npm run build`, `npm run check:sync`, `npm run test:policy` e `npm run test:mcp` quando esses componentes estiverem disponíveis nos marcos correspondentes.
 
-Playwright Test: `npm install`; `npx playwright install chromium`; `node scripts/servidor-local.mjs` num terminal; `$env:SITE_URL='http://127.0.0.1:4173'` e `npm run test:e2e` no segundo. Para Vercel, substitua `SITE_URL` pela URL real. Vídeos e screenshots são gerados somente quando os testes de navegador são executados.
+A validação automatizada não exige instalação de dependências. Para a inspeção visual, execute `npm run build`, inicie `node scripts/servidor-local.mjs` e abra `http://127.0.0.1:4173`. O roteiro formal está em `docs/VALIDACAO_M9.md`.
 
 ## Privacidade
 

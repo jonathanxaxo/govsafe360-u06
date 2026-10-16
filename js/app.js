@@ -267,4 +267,4 @@ clearAuditButton.addEventListener('click', () => {
 
 render();
 renderAudit();
-console.info('GOVSAFE 360 · Marco 8 carregado em build estático de Preview.');
+console.info('GOVSAFE 360 · Marco 9 carregado para validação formal.');
