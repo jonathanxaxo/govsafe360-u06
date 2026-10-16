@@ -51,6 +51,10 @@ O material original do curso também prevê a sequência `npm run build`, `npm r
 
 A validação automatizada não exige instalação de dependências. Para a inspeção visual, execute `npm run build`, inicie `node scripts/servidor-local.mjs` e abra `http://127.0.0.1:4173`. Os roteiros formais estão em `docs/VALIDACAO_M9.md` e `docs/PRODUCAO_M10.md`.
 
+## Evidências finais do Piloto IA 06
+
+Os dois prints solicitados na atividade final estão organizados em [`docs/EVIDENCIAS_PILOTO_IA_06.md`](docs/EVIDENCIAS_PILOTO_IA_06.md), com visualizações desktop e móvel da aplicação publicada.
+
 ## Privacidade
 
 Somente cenários fictícios. Nunca copie `.env`, tokens, documentos institucionais, cidadãos ou capturas de autenticação. Não há sincronização de dados entre visitantes do site.
