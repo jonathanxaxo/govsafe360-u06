@@ -12,7 +12,7 @@ const [html, readme, producao, mapa, vercel] = await Promise.all([
   ler('vercel.json')
 ]);
 
-assert.match(html, /<title>GOVSAFE 360 · Marco 10<\/title>/);
+assert.match(html, /<title>NexoGov IA · Governança responsável<\/title>/);
 assert.match(html, /Marco 10 · Produção validada/);
 assert.match(html, /M10 concluído: produção publicada após autorização específica/);
 assert.match(readme, /Situação atual — Marco 10/);

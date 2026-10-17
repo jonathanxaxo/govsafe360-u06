@@ -1,4 +1,6 @@
-# GOVSAFE 360 v15 · Laboratório didático SEMA/MT
+# NexoGov IA · Laboratório didático de governança responsável
+
+Identidade visual autoral do projeto acadêmico GOVSAFE 360, preservando o motor determinístico, a rastreabilidade e todos os controles construídos nos marcos do curso.
 
 Protótipo de governança com dados 100% inventados; **não é política institucional homologada**. Site estático, HTML/CSS/JavaScript sem backend, autenticação, banco remoto ou cobrança. Quando publicado na Vercel, o **código do site é acessível pela URL**; cada navegador mantém seu `localStorage` local e separado.
 

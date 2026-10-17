@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Protótipo didático GOVSAFE 360 com dados inteiramente fictícios.">
-  <title>GOVSAFE 360 · Marco 10</title>
+  <meta name="description" content="NexoGov IA: laboratório visual de governança e decisão responsável com dados inteiramente fictícios.">
+  <title>NexoGov IA · Governança responsável</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -13,78 +13,100 @@
   <div class="app-shell">
     <aside class="sidebar" aria-label="Navegação principal">
       <div class="brand">
-        <span class="brand-mark" aria-hidden="true">✦</span>
+        <span class="brand-mark" aria-hidden="true">NG</span>
         <div>
-          <strong>GOVSAFE 360</strong>
-          <small>Laboratório didático</small>
+          <strong>NexoGov IA</strong>
+          <small>Decisão responsável</small>
         </div>
       </div>
 
       <nav>
-        <a class="nav-link active" href="#visao-geral">Visão geral</a>
-        <a class="nav-link" href="#cadastro">Novo cenário</a>
-        <a class="nav-link" href="#cenarios">Cenários fictícios</a>
-        <a class="nav-link" href="#revisao">Revisão e auditoria</a>
-        <a class="nav-link" href="#limites">Limites do piloto</a>
+        <a class="nav-link active" href="#visao-geral"><span aria-hidden="true">01</span> Central de governança</a>
+        <a class="nav-link" href="#cadastro"><span aria-hidden="true">02</span> Simulador de decisão</a>
+        <a class="nav-link" href="#cenarios"><span aria-hidden="true">03</span> Biblioteca de casos</a>
+        <a class="nav-link" href="#revisao"><span aria-hidden="true">04</span> Trilha de controle</a>
+        <a class="nav-link" href="#limites"><span aria-hidden="true">05</span> Escopo e salvaguardas</a>
       </nav>
 
-      <p class="sidebar-note">Unidade VI · Marco 10<br>Governança antes da autonomia</p>
+      <div class="sidebar-status">
+        <span class="status-dot" aria-hidden="true"></span>
+        <div><strong>Ambiente demonstrativo</strong><small>Dados 100% fictícios</small></div>
+      </div>
+      <p class="sidebar-note">Projeto acadêmico · Unidade VI<br>Governança antes da autonomia</p>
     </aside>
 
     <main id="conteudo">
       <header class="hero">
         <div>
-          <p class="eyebrow">SEMA/MT · FORMAÇÃO CLAUDE CODE</p>
-          <h1>Da autonomia à responsabilidade.</h1>
-          <p class="hero-text">Painel inicial para visualizar cenários fictícios de uso de agentes de IA.</p>
+          <p class="eyebrow">LABORATÓRIO DE GOVERNANÇA DIGITAL</p>
+          <h1>Decisões de IA com contexto, controle e clareza.</h1>
+          <p class="hero-text">Explore casos fictícios, simule decisões e acompanhe cada revisão em uma jornada integrada de governança responsável.</p>
+          <div class="hero-actions" aria-label="Ações rápidas">
+            <a class="primary-button action-link" href="#cenarios">Explorar casos</a>
+            <a class="secondary-button action-link" href="#cadastro">Criar simulação</a>
+          </div>
         </div>
-        <span class="stage-badge">Marco 10 · Produção validada</span>
+        <div class="hero-seal" aria-label="Estado da demonstração">
+          <span class="seal-icon" aria-hidden="true">✓</span>
+          <div><strong>Versão validada</strong><small>Marco 10 · Produção validada</small></div>
+        </div>
       </header>
 
       <div class="notice" role="note">
-        <strong>Protótipo didático.</strong> Não é um sistema institucional homologado. Não insira dados pessoais, credenciais, documentos restritos ou informações reais da SEMA/MT.
+        <span class="notice-icon" aria-hidden="true">i</span>
+        <div><strong>Protótipo didático — ambiente exclusivamente didático.</strong> Não é um sistema institucional homologado. Não insira dados pessoais, credenciais, documentos restritos ou informações reais.</div>
       </div>
 
       <section id="visao-geral" aria-labelledby="titulo-visao">
         <div class="section-heading">
           <div>
-            <p class="section-kicker">Visão geral</p>
-            <h2 id="titulo-visao">Painel de governança</h2>
+            <p class="section-kicker">Central de governança</p>
+            <h2 id="titulo-visao">Panorama das decisões</h2>
           </div>
-          <p>Dados sintéticos desta demonstração</p>
+          <p>Indicadores calculados em tempo real sobre dados sintéticos</p>
         </div>
 
         <div class="kpi-grid" aria-label="Indicadores do painel">
-          <article class="kpi-card">
+          <button class="kpi-card" type="button" data-status-filter="" aria-label="Mostrar todos os cenários">
             <span>Total de cenários</span>
             <strong id="total-cenarios">8</strong>
-            <small>Base inicial do exercício</small>
-          </article>
-          <article class="kpi-card allowed">
+            <small>Visualizar biblioteca completa →</small>
+          </button>
+          <button class="kpi-card allowed" type="button" data-status-filter="permitido" aria-label="Filtrar cenários permitidos">
             <span>Permitidos</span>
             <strong id="total-permitidos">0</strong>
-            <small>Uso didático supervisionado</small>
-          </article>
-          <article class="kpi-card conditional">
+            <small>Baixo risco no contexto simulado →</small>
+          </button>
+          <button class="kpi-card conditional" type="button" data-status-filter="condicionado" aria-label="Filtrar cenários que exigem condições">
             <span>Exigem condições</span>
             <strong id="total-condicionados">0</strong>
-            <small>Revisão e controles prévios</small>
-          </article>
-          <article class="kpi-card denied">
+            <small>Requerem controles adicionais →</small>
+          </button>
+          <button class="kpi-card denied" type="button" data-status-filter="nao-autorizado" aria-label="Filtrar cenários não autorizados">
             <span>Não autorizados</span>
             <strong id="total-nao-autorizados">0</strong>
-            <small>Risco incompatível com o piloto</small>
-          </article>
+            <small>Bloqueio conservador obrigatório →</small>
+          </button>
+        </div>
+
+        <div class="decision-flow" aria-label="Fluxo de decisão do laboratório">
+          <div><span>1</span><strong>Contexto</strong><small>Dados e ambiente</small></div>
+          <i aria-hidden="true">→</i>
+          <div><span>2</span><strong>Política</strong><small>Regras R1–R5</small></div>
+          <i aria-hidden="true">→</i>
+          <div><span>3</span><strong>Revisão</strong><small>Controle humano</small></div>
+          <i aria-hidden="true">→</i>
+          <div><span>4</span><strong>Evidência</strong><small>Auditoria local</small></div>
         </div>
       </section>
 
       <section id="cadastro" class="panel" aria-labelledby="titulo-cadastro">
         <div class="section-heading">
           <div>
-            <p class="section-kicker">Cadastro local</p>
-            <h2 id="titulo-cadastro">Adicionar cenário sintético</h2>
+            <p class="section-kicker">Simulador de decisão</p>
+            <h2 id="titulo-cadastro">Crie um caso fictício</h2>
           </div>
-          <p>Salvo somente neste navegador</p>
+          <p>Processado e salvo somente neste navegador</p>
         </div>
         <form id="cenario-form" class="scenario-form">
           <label class="field field-wide">Finalidade fictícia
@@ -134,10 +156,10 @@
       <section id="cenarios" class="panel" aria-labelledby="titulo-cenarios">
         <div class="section-heading">
           <div>
-            <p class="section-kicker">Matriz inicial</p>
-            <h2 id="titulo-cenarios">Oito cenários fictícios</h2>
+            <p class="section-kicker">Biblioteca de casos</p>
+            <h2 id="titulo-cenarios">Oito situações para explorar</h2>
           </div>
-          <p>Classificações calculadas pelas regras didáticas R1–R5</p>
+          <p>Decisões explicáveis calculadas pelas regras didáticas R1–R5</p>
         </div>
 
         <div class="filters" aria-label="Busca e filtros de cenários">
@@ -186,10 +208,10 @@
       <section id="revisao" class="panel" aria-labelledby="titulo-revisao">
         <div class="section-heading">
           <div>
-            <p class="section-kicker">Controle humano simulado</p>
-            <h2 id="titulo-revisao">Revisão e auditoria local</h2>
+            <p class="section-kicker">Trilha de controle</p>
+            <h2 id="titulo-revisao">Revisão humana e evidências</h2>
           </div>
-          <p>A classificação da política nunca é alterada</p>
+          <p>A decisão humana é registrada sem sobrescrever a política</p>
         </div>
         <form id="review-form" class="scenario-form">
           <label class="field field-wide">Cenário
@@ -225,8 +247,8 @@
 
       <section id="limites" class="panel limits" aria-labelledby="titulo-limites">
         <div>
-          <p class="section-kicker">Limites do Marco 10</p>
-          <h2 id="titulo-limites">O que esta versão faz — e o que ainda não faz</h2>
+          <p class="section-kicker">Escopo e salvaguardas</p>
+          <h2 id="titulo-limites">Capacidades, limites e uso responsável</h2>
         </div>
         <div class="limit-grid">
           <article>
@@ -254,7 +276,7 @@
         </div>
       </section>
 
-      <footer>GOVSAFE 360 · Demonstração educacional · Somente dados fictícios</footer>
+      <footer><strong>NexoGov IA</strong> · Laboratório educacional de governança · Somente dados fictícios</footer>
     </main>
   </div>
 

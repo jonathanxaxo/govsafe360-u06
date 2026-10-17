@@ -1,13 +1,13 @@
 // Marco 8: versão preparada para Preview Vercel com build estático reproduzível.
 const initialScenarios = [
-  { id: 'S01', title: 'Resumir relatório público fictício', data: 'Público', env: 'Desenvolvimento', autonomy: 'Leitura' },
-  { id: 'S02', title: 'Analisar planilha interna simulada', data: 'Interno', env: 'Homologação', autonomy: 'Proposta' },
-  { id: 'S03', title: 'Inserir token fictício em um prompt', data: 'Credencial', env: 'Desenvolvimento', autonomy: 'Execução' },
-  { id: 'S04', title: 'Atualizar status em produção simulada', data: 'Interno', env: 'Produção', autonomy: 'Execução' },
-  { id: 'S05', title: 'Enviar CPF fictício a serviço não aprovado', data: 'Pessoal', env: 'Desenvolvimento', autonomy: 'Leitura' },
-  { id: 'S06', title: 'Revisar código de exemplo fictício', data: 'Público', env: 'Desenvolvimento', autonomy: 'Edição' },
-  { id: 'S07', title: 'Executar comando destrutivo em produção simulada', data: 'Interno', env: 'Produção', autonomy: 'Crítica' },
-  { id: 'S08', title: 'Ler documento externo com instrução suspeita', data: 'Externo', env: 'Desenvolvimento', autonomy: 'Leitura' }
+  { id: 'S01', title: 'Sintetizar boletim de transparência simulado', data: 'Público', env: 'Desenvolvimento', autonomy: 'Leitura' },
+  { id: 'S02', title: 'Interpretar indicadores internos fictícios', data: 'Interno', env: 'Homologação', autonomy: 'Proposta' },
+  { id: 'S03', title: 'Usar chave fictícia em uma solicitação', data: 'Credencial', env: 'Desenvolvimento', autonomy: 'Execução' },
+  { id: 'S04', title: 'Automatizar atualização em produção simulada', data: 'Interno', env: 'Produção', autonomy: 'Execução' },
+  { id: 'S05', title: 'Compartilhar cadastro sintético com serviço não aprovado', data: 'Pessoal', env: 'Desenvolvimento', autonomy: 'Leitura' },
+  { id: 'S06', title: 'Sugerir melhoria em código público demonstrativo', data: 'Público', env: 'Desenvolvimento', autonomy: 'Edição' },
+  { id: 'S07', title: 'Executar ação crítica sem validação em produção simulada', data: 'Interno', env: 'Produção', autonomy: 'Crítica' },
+  { id: 'S08', title: 'Analisar arquivo externo com comando malicioso incorporado', data: 'Externo', env: 'Desenvolvimento', autonomy: 'Leitura' }
 ].map((scenario) => ({ ...scenario, justification: 'Cenário sintético inicial do curso.' }));
 
 const repository = globalThis.GOVSAFE_SCENARIOS.criarRepositorio(globalThis.localStorage);
@@ -177,6 +177,31 @@ document.getElementById('limpar-filtros').addEventListener('click', () => {
   searchInput.focus();
 });
 
+document.querySelectorAll('[data-status-filter]').forEach((card) => {
+  card.addEventListener('click', () => {
+    searchInput.value = '';
+    dataFilter.value = '';
+    statusFilter.value = card.dataset.statusFilter;
+    render();
+    document.getElementById('cenarios').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+const observedSections = [...document.querySelectorAll('main section[id]')];
+const navigationLinks = [...document.querySelectorAll('.nav-link')];
+if ('IntersectionObserver' in globalThis) {
+  const sectionObserver = new IntersectionObserver((entries) => {
+    const visible = entries
+      .filter((entry) => entry.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    if (!visible) return;
+    navigationLinks.forEach((link) => {
+      link.classList.toggle('active', link.getAttribute('href') === `#${visible.target.id}`);
+    });
+  }, { rootMargin: '-20% 0px -65% 0px', threshold: [0.05, 0.3] });
+  observedSections.forEach((section) => sectionObserver.observe(section));
+}
+
 const clearLocalButton = document.getElementById('limpar-cadastros');
 let clearLocalPending = false;
 clearLocalButton.addEventListener('click', () => {
@@ -267,4 +292,4 @@ clearAuditButton.addEventListener('click', () => {
 
 render();
 renderAudit();
-console.info('GOVSAFE 360 · Marco 9 carregado para validação formal.');
+console.info('NexoGov IA · experiência didática carregada com o motor GOVSAFE validado.');
