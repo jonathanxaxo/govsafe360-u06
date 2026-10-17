@@ -37,14 +37,21 @@ assert.match(css, /@media \(max-width: 620px\)/);
 assert.match(css, /\.table-wrap[^}]*overflow-x:\s*auto/s);
 
 assert.equal([...app.matchAll(/\{ id: 'S\d{2}'/g)].length, 8, 'devem existir oito cenários iniciais');
-assert.match(html, /Protótipo didático/);
-assert.match(html, /Não é um sistema institucional homologado/);
-assert.match(html, /somente informações fictícias/);
+assert.match(html, /Simulação de fluxo institucional com dados demonstrativos/);
+assert.match(html, /não é um sistema institucional homologado/i);
+assert.match(html, /dados demonstrativos/);
+assert.match(html, /Unidade solicitante/);
+assert.match(html, /Função do responsável/);
+assert.match(html, /Impacto de eventual erro/);
+assert.match(html, /Controles já existentes/);
+assert.match(html, /Função do revisor/);
 assert.match(app, /GOVSAFE_POLICY\.avaliar/);
 assert.match(cenarios, /slice\(0, 100\)/);
 assert.match(auditoria, /slice\(0, 500\)/);
 assert.match(auditoria, /policyDecision\.status === 'nao-autorizado'/);
 assert.match(politica, /Object\.freeze/);
+assert.match(politica, /controles: Object\.freeze/);
+assert.match(auditoria, /controlsConfirmed/);
 
 const padroesSensiveis = [
   /-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----/,

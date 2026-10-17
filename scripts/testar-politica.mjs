@@ -19,6 +19,8 @@ for (const [descricao, esperado, entrada] of casos) {
   assert.equal(obtido.status, esperado, descricao);
   assert.match(obtido.regra, /^R[1-5]$/, `${descricao}: deve informar a regra aplicada`);
   assert.ok(obtido.motivo.length > 20, `${descricao}: deve explicar a decisão`);
+  assert.match(obtido.risco, /^(Baixo|Moderado|Alto|Crítico)$/, `${descricao}: deve informar o nível de risco`);
+  assert.ok(Array.isArray(obtido.controles) && obtido.controles.length >= 3, `${descricao}: deve informar controles aplicáveis`);
 }
 
 assert.throws(

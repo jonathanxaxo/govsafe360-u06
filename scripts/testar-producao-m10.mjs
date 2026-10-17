@@ -13,9 +13,9 @@ const [html, readme, producao, mapa, vercel] = await Promise.all([
 ]);
 
 assert.match(html, /<title>NexoGov IA · Governança responsável<\/title>/);
-assert.match(html, /Marco 10 · Produção validada/);
-assert.match(html, /M10 concluído: produção publicada após autorização específica/);
-assert.match(readme, /Situação atual — Marco 10/);
+assert.match(html, /Marco 11 · Fluxo institucional/);
+assert.match(html, /M11: fluxo institucional demonstrativo/);
+assert.match(readme, /Situação atual — Marco 11/);
 assert.match(readme, /docs\/PRODUCAO_M10\.md/);
 assert.match(producao, /https:\/\/govsafe360-u06-blush\.vercel\.app\//);
 assert.match(producao, /produção autorizada, publicada e validada/);
@@ -26,4 +26,4 @@ const cabecalhos = new Map(configuracaoVercel.headers[0].headers.map(({ key, val
 assert.match(cabecalhos.get('Content-Security-Policy'), /connect-src 'none'/);
 assert.equal(cabecalhos.get('X-Frame-Options'), 'DENY');
 
-console.log('PASS: M10 documenta e valida a publicação autorizada em produção sem alterar as regras de governança.');
+console.log('PASS: M11 preserva a produção autorizada e valida o fluxo institucional demonstrativo.');

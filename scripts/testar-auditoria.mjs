@@ -19,9 +19,14 @@ const aprovado = repo.registrarRevisao({
   scenario: condicionado,
   policyDecision: decisaoCondicionada,
   humanDecision: 'aprovado',
-  justification: 'Revisão simulada com controles prévios.'
+  justification: 'Revisão simulada com controles prévios.',
+  reviewerRole: 'Gestor demonstrativo',
+  controlsConfirmed: 'sim',
+  pendingActions: 'Monitorar o uso e registrar evidências.'
 });
 assert.equal(aprovado.result, 'aprovado');
+assert.equal(aprovado.controlsConfirmed, true);
+assert.equal(aprovado.riskLevel, 'Moderado');
 
 const proibido = { id: 'S03', title: 'Credencial fictícia' };
 const decisaoProibida = globalThis.GOVSAFE_POLICY.avaliar({ dados: 'Credencial', ambiente: 'Desenvolvimento', autonomia: 'Execução' });
@@ -29,7 +34,10 @@ const bloqueado = repo.registrarRevisao({
   scenario: proibido,
   policyDecision: decisaoProibida,
   humanDecision: 'aprovado',
-  justification: 'Tentativa simulada que deve permanecer bloqueada.'
+  justification: 'Tentativa simulada que deve permanecer bloqueada.',
+  reviewerRole: 'Gestor demonstrativo',
+  controlsConfirmed: 'sim',
+  pendingActions: 'Interromper a solicitação.'
 });
 assert.equal(bloqueado.result, 'bloqueada');
 assert.equal(repo.carregar().length, 2);
@@ -39,16 +47,27 @@ assert.throws(
 );
 
 const csv = globalThis.GOVSAFE_AUDIT.gerarCsv([
-  { ...condicionado, data: 'Interno', env: 'Homologação', autonomy: 'Proposta' }
+  { ...condicionado, unit: 'Planejamento', process: 'Monitoramento', source: 'Painel interno', impact: 'Moderado', data: 'Interno', env: 'Homologação', autonomy: 'Proposta' }
 ], () => decisaoCondicionada, repo.carregar());
-assert.match(csv, /"ID";"Finalidade"/);
+assert.match(csv, /"ID";"Demanda";"Unidade"/);
 assert.match(csv, /"S02";"Planilha interna fictícia"/);
 assert.match(csv, /"aprovado"/);
 
 const json = JSON.parse(globalThis.GOVSAFE_AUDIT.gerarJson(repo.carregar()));
-assert.equal(json.schema, 'govsafe360-auditoria-v1');
+assert.equal(json.schema, 'nexogov-auditoria-v2');
 assert.equal(json.events.length, 2);
+
+const pendente = repo.registrarRevisao({
+  scenario: condicionado,
+  policyDecision: decisaoCondicionada,
+  humanDecision: 'aprovado',
+  justification: 'Tentativa sem confirmação dos controles.',
+  reviewerRole: 'Gestor demonstrativo',
+  controlsConfirmed: 'nao',
+  pendingActions: 'Confirmar minimização e acesso restrito.'
+});
+assert.equal(pendente.result, 'bloqueada', 'demanda condicionada não pode ser aprovada sem controles confirmados');
 
 repo.limpar();
 assert.deepEqual(repo.carregar(), []);
-console.log('PASS: revisão, bloqueio conservador, auditoria, CSV, JSON e reversão verificados.');
+console.log('PASS: revisão, controles, bloqueio conservador, auditoria, CSV, JSON e reversão verificados.');

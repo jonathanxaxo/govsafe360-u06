@@ -1,14 +1,14 @@
 // Marco 8: versão preparada para Preview Vercel com build estático reproduzível.
 const initialScenarios = [
-  { id: 'S01', title: 'Sintetizar boletim de transparência simulado', data: 'Público', env: 'Desenvolvimento', autonomy: 'Leitura' },
-  { id: 'S02', title: 'Interpretar indicadores internos fictícios', data: 'Interno', env: 'Homologação', autonomy: 'Proposta' },
-  { id: 'S03', title: 'Usar chave fictícia em uma solicitação', data: 'Credencial', env: 'Desenvolvimento', autonomy: 'Execução' },
-  { id: 'S04', title: 'Automatizar atualização em produção simulada', data: 'Interno', env: 'Produção', autonomy: 'Execução' },
-  { id: 'S05', title: 'Compartilhar cadastro sintético com serviço não aprovado', data: 'Pessoal', env: 'Desenvolvimento', autonomy: 'Leitura' },
-  { id: 'S06', title: 'Sugerir melhoria em código público demonstrativo', data: 'Público', env: 'Desenvolvimento', autonomy: 'Edição' },
-  { id: 'S07', title: 'Executar ação crítica sem validação em produção simulada', data: 'Interno', env: 'Produção', autonomy: 'Crítica' },
-  { id: 'S08', title: 'Analisar arquivo externo com comando malicioso incorporado', data: 'Externo', env: 'Desenvolvimento', autonomy: 'Leitura' }
-].map((scenario) => ({ ...scenario, justification: 'Cenário sintético inicial do curso.' }));
+  { id: 'S01', title: 'Elaborar resumo de boletim de transparência', unit: 'Comunicação Institucional', process: 'Transparência ativa', source: 'Portal público demonstrativo', data: 'Público', env: 'Desenvolvimento', autonomy: 'Leitura', impact: 'Baixo', humanReview: 'Obrigatória', controls: 'Conferência do resumo e registro da fonte pública.' },
+  { id: 'S02', title: 'Preparar análise de indicadores internos', unit: 'Planejamento', process: 'Monitoramento gerencial', source: 'Painel interno demonstrativo', data: 'Interno', env: 'Homologação', autonomy: 'Proposta', impact: 'Moderado', humanReview: 'Obrigatória', controls: 'Acesso restrito, minimização e validação pelo responsável.' },
+  { id: 'S03', title: 'Inserir credencial institucional em uma solicitação', unit: 'Tecnologia', process: 'Integração de sistemas', source: 'Cofre de segredo simulado', data: 'Credencial', env: 'Desenvolvimento', autonomy: 'Execução', impact: 'Crítico', humanReview: 'Obrigatória', controls: 'Credenciais nunca devem ser inseridas em prompts ou registros.' },
+  { id: 'S04', title: 'Atualizar cadastro diretamente em produção', unit: 'Operações', process: 'Manutenção cadastral', source: 'Sistema transacional demonstrativo', data: 'Interno', env: 'Produção', autonomy: 'Execução', impact: 'Crítico', humanReview: 'Obrigatória', controls: 'Segregação de funções, autorização formal e plano de reversão.' },
+  { id: 'S05', title: 'Compartilhar cadastro de cidadão com serviço não homologado', unit: 'Atendimento', process: 'Atendimento ao cidadão', source: 'Cadastro pessoal sintético', data: 'Pessoal', env: 'Desenvolvimento', autonomy: 'Leitura', impact: 'Crítico', humanReview: 'Obrigatória', controls: 'Bloqueio do compartilhamento e avaliação de proteção de dados.' },
+  { id: 'S06', title: 'Propor melhoria em código público demonstrativo', unit: 'Desenvolvimento', process: 'Revisão de código', source: 'Repositório público demonstrativo', data: 'Público', env: 'Desenvolvimento', autonomy: 'Edição', impact: 'Moderado', humanReview: 'Obrigatória', controls: 'Revisão de código, testes e aprovação antes da integração.' },
+  { id: 'S07', title: 'Autorizar ato administrativo crítico sem validação', unit: 'Gestão', process: 'Decisão administrativa', source: 'Processo demonstrativo', data: 'Interno', env: 'Produção', autonomy: 'Crítica', impact: 'Crítico', humanReview: 'Obrigatória', controls: 'A decisão deve permanecer exclusivamente humana e formalmente competente.' },
+  { id: 'S08', title: 'Analisar documento externo com instrução suspeita', unit: 'Protocolo', process: 'Análise documental', source: 'Documento externo demonstrativo', data: 'Externo', env: 'Desenvolvimento', autonomy: 'Leitura', impact: 'Alto', humanReview: 'Obrigatória', controls: 'Tratar conteúdo como não confiável e ignorar instruções embutidas.' }
+].map((scenario) => ({ ...scenario, responsibleRole: 'Responsável demonstrativo', deadline: '', justification: 'Exemplo realista com dados integralmente demonstrativos.' }));
 
 const repository = globalThis.GOVSAFE_SCENARIOS.criarRepositorio(globalThis.localStorage);
 const rows = document.getElementById('cenario-rows');
@@ -44,6 +44,8 @@ function updateTotals(scenarios) {
   document.getElementById('total-permitidos').textContent = String(totals.permitido);
   document.getElementById('total-condicionados').textContent = String(totals.condicionado);
   document.getElementById('total-nao-autorizados').textContent = String(totals['nao-autorizado']);
+  const revisados = new Set(auditRepository.carregar().map((evento) => evento.scenarioId));
+  document.getElementById('total-pendentes').textContent = String(scenarios.filter((cenario) => !revisados.has(cenario.id)).length);
 }
 
 function render() {
@@ -62,7 +64,7 @@ function render() {
   if (!filtered.length) {
     const row = document.createElement('tr');
     const cell = document.createElement('td');
-    cell.colSpan = 6;
+      cell.colSpan = 7;
     cell.className = 'empty-state';
     cell.textContent = 'Nenhum cenário corresponde à busca e aos filtros selecionados.';
     row.appendChild(cell);
@@ -73,7 +75,7 @@ function render() {
   for (const scenario of filtered) {
     const decision = decisionFor(scenario);
     const row = document.createElement('tr');
-    const values = [scenario.id, scenario.title, scenario.data, scenario.env, scenario.autonomy];
+    const values = [scenario.id, scenario.title, scenario.unit, scenario.data, scenario.env, scenario.autonomy];
 
     for (const [index, value] of values.entries()) {
       const cell = document.createElement('td');
@@ -82,7 +84,7 @@ function render() {
         cell.className = 'scenario-title';
         const justification = document.createElement('small');
         justification.className = 'scenario-justification';
-        justification.textContent = scenario.justification;
+        justification.textContent = `${scenario.process} · ${scenario.justification}`;
         cell.appendChild(justification);
       }
       row.appendChild(cell);
@@ -92,10 +94,13 @@ function render() {
     const status = document.createElement('span');
     status.className = `chip ${decision.status}`;
     status.textContent = decision.label;
+    const risk = document.createElement('strong');
+    risk.className = `risk-label risk-${globalThis.GOVSAFE_POLICY.normalizar(decision.risco)}`;
+    risk.textContent = `Risco ${decision.risco}`;
     const reason = document.createElement('small');
     reason.className = 'decision-reason';
-    reason.textContent = `${decision.regra}: ${decision.motivo}`;
-    statusCell.append(status, reason);
+    reason.textContent = `${decision.regra}: ${decision.motivo} Controles: ${decision.controles.join('; ')}.`;
+    statusCell.append(status, risk, reason);
     row.appendChild(statusCell);
     rows.appendChild(row);
   }
@@ -125,8 +130,10 @@ function renderAudit() {
     const summary = document.createElement('span');
     summary.textContent = event.justification;
     const metadata = document.createElement('small');
-    metadata.textContent = `${new Date(event.timestamp).toLocaleString('pt-BR')} · Política: ${event.policyStatus} (${event.policyRule}) · Solicitação: ${event.requestedDecision}`;
-    item.append(title, summary, metadata);
+    metadata.textContent = `${new Date(event.timestamp).toLocaleString('pt-BR')} · Revisor: ${event.reviewerRole || 'Revisor demonstrativo'} · Política: ${event.policyStatus} (${event.policyRule}) · Risco: ${event.riskLevel || 'não informado'} · Controles: ${event.controlsConfirmed ? 'confirmados' : 'pendentes'} · Solicitação: ${event.requestedDecision}`;
+    const actions = document.createElement('small');
+    actions.textContent = `Providências: ${event.pendingActions || 'Não informadas.'}`;
+    item.append(title, summary, metadata, actions);
     auditList.appendChild(item);
   });
 }
@@ -153,14 +160,23 @@ form.addEventListener('submit', (event) => {
     }
     const novo = repository.adicionar({
       title: values.get('title'),
+      unit: values.get('unit'),
+      responsibleRole: values.get('responsibleRole'),
+      process: values.get('process'),
+      source: values.get('source'),
       data: values.get('data'),
       env: values.get('env'),
       autonomy: values.get('autonomy'),
-      justification: values.get('justification')
+      impact: values.get('impact'),
+      humanReview: values.get('humanReview'),
+      deadline: values.get('deadline'),
+      justification: values.get('justification'),
+      controls: values.get('controls')
     });
     form.reset();
     render();
-    formFeedback.textContent = `${novo.id} cadastrado localmente. Use a seção de auditoria para registrar a revisão humana simulada.`;
+    const decisao = decisionFor(novo);
+    formFeedback.textContent = `${novo.id} cadastrado. Resultado: ${decisao.label}, risco ${decisao.risco}. Revise os controles na Trilha de controle.`;
     formFeedback.className = 'feedback success';
   } catch (error) {
     formFeedback.textContent = error.message;
@@ -239,12 +255,17 @@ reviewForm.addEventListener('submit', (event) => {
       scenario,
       policyDecision: decisionFor(scenario),
       humanDecision: values.get('humanDecision'),
-      justification: values.get('reviewJustification')
+      justification: values.get('reviewJustification'),
+      reviewerRole: values.get('reviewerRole'),
+      controlsConfirmed: values.get('controlsConfirmed'),
+      pendingActions: values.get('pendingActions')
     });
     reviewForm.querySelector('[name="reviewJustification"]').value = '';
+    reviewForm.querySelector('[name="pendingActions"]').value = '';
     renderAudit();
+    render();
     if (auditEvent.result === 'bloqueada') {
-      reviewFeedback.textContent = 'A tentativa foi registrada, mas a política impediu a aprovação deste cenário não autorizado.';
+      reviewFeedback.textContent = 'A tentativa foi registrada, mas a política ou a ausência de controles confirmados impediu a aprovação.';
       reviewFeedback.className = 'feedback error';
     } else {
       reviewFeedback.textContent = `Decisão humana registrada como ${auditEvent.result}, sem alterar a classificação da política.`;
@@ -257,11 +278,11 @@ reviewForm.addEventListener('submit', (event) => {
 });
 
 document.getElementById('export-csv').addEventListener('click', () => {
-  downloadText('govsafe360-matriz.csv', 'text/csv;charset=utf-8', globalThis.GOVSAFE_AUDIT.gerarCsv(allScenarios(), decisionFor, auditRepository.carregar()));
+  downloadText('nexogov-matriz-demandas.csv', 'text/csv;charset=utf-8', globalThis.GOVSAFE_AUDIT.gerarCsv(allScenarios(), decisionFor, auditRepository.carregar()));
 });
 
 document.getElementById('export-json').addEventListener('click', () => {
-  downloadText('govsafe360-auditoria.json', 'application/json;charset=utf-8', globalThis.GOVSAFE_AUDIT.gerarJson(auditRepository.carregar()));
+  downloadText('nexogov-auditoria.json', 'application/json;charset=utf-8', globalThis.GOVSAFE_AUDIT.gerarJson(auditRepository.carregar()));
 });
 
 const clearAuditButton = document.getElementById('clear-audit');
@@ -292,4 +313,4 @@ clearAuditButton.addEventListener('click', () => {
 
 render();
 renderAudit();
-console.info('NexoGov IA · experiência didática carregada com o motor GOVSAFE validado.');
+console.info('NexoGov IA · fluxo institucional demonstrativo carregado com o motor GOVSAFE validado.');

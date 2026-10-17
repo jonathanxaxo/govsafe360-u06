@@ -10,3 +10,8 @@ CA08: CSV baixa com cabeçalhos e dados; JSON de auditoria possui eventos.
 CA09: botões funcionam sem internet; console sem erros de JavaScript.
 CA10: interface utilizável em viewport de 390px com document.documentElement.scrollWidth <= window.innerWidth + 2; rolagem da tabela fica dentro de .table-wrap.
 CA11: `CLAUDE.md` não é tratado como barreira de execução; controles estão na lógica do sistema e permissões reais do Claude Code.
+CA12: cadastro institucional demonstrativo exige unidade, função responsável, processo, fonte, impacto, revisão e controles.
+CA13: cada decisão informa nível de risco e ao menos três controles recomendados.
+CA14: demanda condicionada não pode ser aprovada sem confirmação explícita dos controles.
+CA15: CSV inclui contexto institucional, risco e controles; JSON usa esquema versionado de auditoria.
+CA16: registros antigos sem os novos campos recebem valores demonstrativos seguros e continuam carregando.

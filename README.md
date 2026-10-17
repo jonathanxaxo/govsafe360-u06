@@ -1,25 +1,28 @@
-# NexoGov IA · Laboratório didático de governança responsável
+# NexoGov IA · Fluxo institucional demonstrativo de governança responsável
 
 Identidade visual autoral do projeto acadêmico GOVSAFE 360, preservando o motor determinístico, a rastreabilidade e todos os controles construídos nos marcos do curso.
 
 Protótipo de governança com dados 100% inventados; **não é política institucional homologada**. Site estático, HTML/CSS/JavaScript sem backend, autenticação, banco remoto ou cobrança. Quando publicado na Vercel, o **código do site é acessível pela URL**; cada navegador mantém seu `localStorage` local e separado.
 
-## Situação atual — Marco 10
+## Situação atual — Marco 11
 
 O projeto foi construído progressivamente nos marcos autorizados e atualmente possui:
 
 - dashboard e navegação;
-- oito cenários fictícios;
+- oito cenários institucionais realistas com dados demonstrativos;
 - motor determinístico de governança;
-- cadastro local, busca e filtros;
-- revisão humana simulada;
-- auditoria e exportações CSV/JSON;
+- cadastro institucional com unidade, responsável, processo, fonte, impacto, controles e prazo;
+- análise explicável com nível de risco e controles obrigatórios;
+- busca, filtros e persistência local compatível com registros anteriores;
+- revisão humana com função do revisor, confirmação de controles e providências;
+- auditoria e exportações CSV/JSON enriquecidas;
 - testes automatizados de qualidade;
 - histórico Git local;
 - repositório GitHub e integração contínua.
 - build estático e Preview protegido na Vercel;
 - validação formal de requisitos, critérios de aceite, responsividade, acessibilidade e segurança básica.
 - publicação de produção autorizada e validada na Vercel.
+- interface refinada para demonstrar o fluxo solicitação → avaliação → revisão → evidência.
 
 Para validar a versão atual:
 
@@ -27,11 +30,11 @@ Para validar a versão atual:
 npm run quality
 ```
 
-Consulte também `docs/CRITERIOS_ACEITE.md`, `docs/EVIDENCIAS_M5.md`, `docs/HISTORICO_GIT_M6.md`, `docs/GITHUB_CI_M7.md`, `docs/VERCEL_PREVIEW_M8.md`, `docs/VALIDACAO_M9.md` e `docs/PRODUCAO_M10.md`.
+Consulte também `docs/CRITERIOS_ACEITE.md`, `docs/EVIDENCIAS_M5.md`, `docs/HISTORICO_GIT_M6.md`, `docs/GITHUB_CI_M7.md`, `docs/VERCEL_PREVIEW_M8.md`, `docs/VALIDACAO_M9.md`, `docs/PRODUCAO_M10.md` e `docs/MARCO_11_FLUXO_INSTITUCIONAL.md`.
 
 ## Usar offline
 
-Extraia a pasta, abra `index.html` no navegador, teste oito cenários, crie um cenário fictício, filtre, registre revisão simulada e exporte CSV/JSON. Não é necessária conta externa para testar a interface local.
+Extraia a pasta, abra `index.html` no navegador, consulte os oito cenários, cadastre uma demanda demonstrativa, filtre, registre a revisão humana e exporte CSV/JSON. Não é necessária conta externa para testar a interface local.
 
 ## Trabalhar com Claude e publicar
 

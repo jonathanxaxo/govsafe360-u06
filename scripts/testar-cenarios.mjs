@@ -15,15 +15,24 @@ const storage = memoria();
 const repo = globalThis.GOVSAFE_SCENARIOS.criarRepositorio(storage);
 const novo = repo.adicionar({
   title: 'Revisar indicador público fictício',
+  unit: 'Planejamento demonstrativo',
+  responsibleRole: 'Analista demonstrativo',
+  process: 'Monitoramento gerencial',
+  source: 'Painel público demonstrativo',
   data: 'Público',
   env: 'Desenvolvimento',
   autonomy: 'Proposta',
+  impact: 'Baixo',
+  humanReview: 'Obrigatória',
+  controls: 'Revisão humana e conferência da fonte.',
   justification: 'Exercício sintético para validar persistência local.'
 });
 
 assert.equal(novo.id, 'C001');
 assert.equal(repo.carregar().length, 1, 'o cenário deve permanecer no armazenamento');
 assert.equal(repo.carregar()[0].title, novo.title, 'o cenário recarregado deve manter os dados');
+assert.equal(repo.carregar()[0].unit, 'Planejamento demonstrativo', 'a unidade demonstrativa deve ser preservada');
+assert.equal(repo.carregar()[0].process, 'Monitoramento gerencial', 'o processo de trabalho deve ser preservado');
 
 const amostra = [
   novo,

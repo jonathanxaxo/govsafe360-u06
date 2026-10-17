@@ -24,13 +24,18 @@
       storage.setItem(STORAGE_KEY, JSON.stringify(eventos.slice(-500)));
     }
 
-    function registrarRevisao({ scenario, policyDecision, humanDecision, justification }) {
+    function registrarRevisao({ scenario, policyDecision, humanDecision, justification, reviewerRole, controlsConfirmed, pendingActions }) {
       const decisaoHumana = String(humanDecision ?? '').trim();
       if (!['aprovado', 'rejeitado'].includes(decisaoHumana)) {
         throw new TypeError('Decisão humana inválida.');
       }
       const justificativa = textoObrigatorio(justification, 500, 'Justificativa');
-      const bloqueada = policyDecision.status === 'nao-autorizado' && decisaoHumana === 'aprovado';
+      const funcaoRevisor = textoObrigatorio(reviewerRole || 'Revisor demonstrativo', 80, 'Função do revisor');
+      const controlesConfirmados = String(controlsConfirmed ?? 'nao') === 'sim';
+      const providencias = textoObrigatorio(pendingActions || 'Sem providências informadas.', 500, 'Pendências e providências');
+      const bloqueadaPelaPolitica = policyDecision.status === 'nao-autorizado' && decisaoHumana === 'aprovado';
+      const bloqueadaPorControle = policyDecision.status === 'condicionado' && decisaoHumana === 'aprovado' && !controlesConfirmados;
+      const bloqueada = bloqueadaPelaPolitica || bloqueadaPorControle;
       const atuais = carregar();
       const evento = Object.freeze({
         id: `A${String(atuais.length + 1).padStart(4, '0')}`,
@@ -39,9 +44,14 @@
         scenarioTitle: scenario.title,
         policyStatus: policyDecision.status,
         policyRule: policyDecision.regra,
+        riskLevel: policyDecision.risco,
+        requiredControls: policyDecision.controles,
         requestedDecision: decisaoHumana,
         result: bloqueada ? 'bloqueada' : decisaoHumana,
-        justification: justificativa
+        justification: justificativa,
+        reviewerRole: funcaoRevisor,
+        controlsConfirmed: controlesConfirmados,
+        pendingActions: providencias
       });
       salvar([...atuais, evento]);
       return evento;
@@ -60,12 +70,12 @@
   }
 
   function gerarCsv(cenarios, obterDecisao, eventos = []) {
-    const cabecalhos = ['ID', 'Finalidade', 'Tipo de dado', 'Ambiente', 'Autonomia', 'Decisão da política', 'Regra', 'Última revisão humana'];
+    const cabecalhos = ['ID', 'Demanda', 'Unidade', 'Processo', 'Fonte', 'Tipo de dado', 'Ambiente', 'Autonomia', 'Impacto', 'Risco', 'Decisão da política', 'Regra', 'Controles obrigatórios', 'Última revisão humana'];
     const linhas = cenarios.map((scenario) => {
       const decision = obterDecisao(scenario);
       const revisoes = eventos.filter((evento) => evento.scenarioId === scenario.id);
       const ultima = revisoes.length ? revisoes[revisoes.length - 1].result : 'pendente';
-      return [scenario.id, scenario.title, scenario.data, scenario.env, scenario.autonomy, decision.status, decision.regra, ultima]
+      return [scenario.id, scenario.title, scenario.unit, scenario.process, scenario.source, scenario.data, scenario.env, scenario.autonomy, scenario.impact, decision.risco, decision.status, decision.regra, decision.controles.join(' | '), ultima]
         .map(escaparCsv)
         .join(';');
     });
@@ -74,7 +84,7 @@
 
   function gerarJson(eventos) {
     return JSON.stringify({
-      schema: 'govsafe360-auditoria-v1',
+      schema: 'nexogov-auditoria-v2',
       exportedAt: new Date().toISOString(),
       events: eventos
     }, null, 2);

@@ -2,7 +2,7 @@
   'use strict';
 
   const STORAGE_KEY = 'govsafe360.cenarios.v1';
-  const CAMPOS = Object.freeze(['title', 'data', 'env', 'autonomy', 'justification']);
+  const CAMPOS = Object.freeze(['title', 'unit', 'responsibleRole', 'process', 'source', 'data', 'env', 'autonomy', 'impact', 'humanReview', 'justification', 'controls']);
 
   function textoSeguro(valor, limite, campo) {
     const texto = String(valor ?? '').trim().replace(/\s+/g, ' ');
@@ -11,14 +11,28 @@
     return texto;
   }
 
+  function textoOpcional(valor, limite, padrao) {
+    const texto = String(valor ?? '').trim().replace(/\s+/g, ' ');
+    if (!texto) return padrao;
+    return texto.slice(0, limite);
+  }
+
   function normalizarCenario(entrada, id) {
     const scenario = {
       id: textoSeguro(id ?? entrada?.id, 20, 'Identificador'),
       title: textoSeguro(entrada?.title, 120, 'Finalidade'),
+      unit: textoOpcional(entrada?.unit, 80, 'Unidade demonstrativa'),
+      responsibleRole: textoOpcional(entrada?.responsibleRole, 80, 'Responsável demonstrativo'),
+      process: textoOpcional(entrada?.process, 120, 'Processo não informado'),
+      source: textoOpcional(entrada?.source, 120, 'Fonte demonstrativa'),
       data: textoSeguro(entrada?.data, 20, 'Tipo de dado'),
       env: textoSeguro(entrada?.env, 24, 'Ambiente'),
       autonomy: textoSeguro(entrada?.autonomy, 20, 'Autonomia'),
+      impact: textoOpcional(entrada?.impact, 20, 'Moderado'),
+      humanReview: textoOpcional(entrada?.humanReview, 30, 'Obrigatória'),
+      deadline: textoOpcional(entrada?.deadline, 10, ''),
       justification: textoSeguro(entrada?.justification, 500, 'Justificativa'),
+      controls: textoOpcional(entrada?.controls, 500, 'Revisão humana e registro da decisão.'),
       createdAt: entrada?.createdAt || new Date().toISOString()
     };
 

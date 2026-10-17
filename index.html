@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="NexoGov IA: laboratório visual de governança e decisão responsável com dados inteiramente fictícios.">
+  <meta name="description" content="NexoGov IA: simulação realista de governança institucional de IA com dados demonstrativos.">
   <title>NexoGov IA · Governança responsável</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -30,7 +30,7 @@
 
       <div class="sidebar-status">
         <span class="status-dot" aria-hidden="true"></span>
-        <div><strong>Ambiente demonstrativo</strong><small>Dados 100% fictícios</small></div>
+        <div><strong>Fluxo institucional simulado</strong><small>Dados 100% demonstrativos</small></div>
       </div>
       <p class="sidebar-note">Projeto acadêmico · Unidade VI<br>Governança antes da autonomia</p>
     </aside>
@@ -38,23 +38,23 @@
     <main id="conteudo">
       <header class="hero">
         <div>
-          <p class="eyebrow">LABORATÓRIO DE GOVERNANÇA DIGITAL</p>
-          <h1>Decisões de IA com contexto, controle e clareza.</h1>
-          <p class="hero-text">Explore casos fictícios, simule decisões e acompanhe cada revisão em uma jornada integrada de governança responsável.</p>
+          <p class="eyebrow">GESTÃO RESPONSÁVEL DE DEMANDAS DE IA</p>
+          <h1>Da solicitação à decisão, com risco, controle e rastreabilidade.</h1>
+          <p class="hero-text">Simule como uma instituição cadastraria, avaliaria, revisaria e documentaria uma demanda de inteligência artificial antes de autorizar seu uso.</p>
           <div class="hero-actions" aria-label="Ações rápidas">
-            <a class="primary-button action-link" href="#cenarios">Explorar casos</a>
-            <a class="secondary-button action-link" href="#cadastro">Criar simulação</a>
+            <a class="primary-button action-link" href="#cadastro">Cadastrar demanda</a>
+            <a class="secondary-button action-link" href="#cenarios">Consultar matriz</a>
           </div>
         </div>
         <div class="hero-seal" aria-label="Estado da demonstração">
           <span class="seal-icon" aria-hidden="true">✓</span>
-          <div><strong>Versão validada</strong><small>Marco 10 · Produção validada</small></div>
+          <div><strong>Demonstração operacional</strong><small>Marco 11 · Fluxo institucional</small></div>
         </div>
       </header>
 
       <div class="notice" role="note">
         <span class="notice-icon" aria-hidden="true">i</span>
-        <div><strong>Protótipo didático — ambiente exclusivamente didático.</strong> Não é um sistema institucional homologado. Não insira dados pessoais, credenciais, documentos restritos ou informações reais.</div>
+        <div><strong>Simulação de fluxo institucional com dados demonstrativos.</strong> A experiência representa uma operação realista, mas não é um sistema institucional homologado. Não insira dados pessoais, credenciais, documentos restritos ou informações reais.</div>
       </div>
 
       <section id="visao-geral" aria-labelledby="titulo-visao">
@@ -63,7 +63,7 @@
             <p class="section-kicker">Central de governança</p>
             <h2 id="titulo-visao">Panorama das decisões</h2>
           </div>
-          <p>Indicadores calculados em tempo real sobre dados sintéticos</p>
+          <p>Visão executiva calculada em tempo real sobre demandas demonstrativas</p>
         </div>
 
         <div class="kpi-grid" aria-label="Indicadores do painel">
@@ -87,16 +87,21 @@
             <strong id="total-nao-autorizados">0</strong>
             <small>Bloqueio conservador obrigatório →</small>
           </button>
+          <div class="kpi-card pending" aria-label="Demandas que aguardam revisão humana">
+            <span>Aguardam revisão</span>
+            <strong id="total-pendentes">0</strong>
+            <small>Decisão humana ainda não registrada</small>
+          </div>
         </div>
 
         <div class="decision-flow" aria-label="Fluxo de decisão do laboratório">
-          <div><span>1</span><strong>Contexto</strong><small>Dados e ambiente</small></div>
+          <div><span>1</span><strong>Solicitação</strong><small>Finalidade e responsável</small></div>
           <i aria-hidden="true">→</i>
-          <div><span>2</span><strong>Política</strong><small>Regras R1–R5</small></div>
+          <div><span>2</span><strong>Avaliação</strong><small>Risco e regras R1–R5</small></div>
           <i aria-hidden="true">→</i>
-          <div><span>3</span><strong>Revisão</strong><small>Controle humano</small></div>
+          <div><span>3</span><strong>Revisão</strong><small>Controles e decisão humana</small></div>
           <i aria-hidden="true">→</i>
-          <div><span>4</span><strong>Evidência</strong><small>Auditoria local</small></div>
+          <div><span>4</span><strong>Evidência</strong><small>Histórico e relatório</small></div>
         </div>
       </section>
 
@@ -104,13 +109,27 @@
         <div class="section-heading">
           <div>
             <p class="section-kicker">Simulador de decisão</p>
-            <h2 id="titulo-cadastro">Crie um caso fictício</h2>
+            <h2 id="titulo-cadastro">Cadastre uma demanda demonstrativa</h2>
           </div>
-          <p>Processado e salvo somente neste navegador</p>
+          <p>Modelo realista, processado e salvo somente neste navegador</p>
         </div>
         <form id="cenario-form" class="scenario-form">
-          <label class="field field-wide">Finalidade fictícia
-            <input name="title" type="text" required maxlength="120" autocomplete="off" placeholder="Ex.: Resumir indicador público fictício">
+          <div class="form-section-title field-wide"><span>01</span><div><strong>Identificação da demanda</strong><small>Quem solicita e para qual processo institucional</small></div></div>
+          <label class="field field-wide">Título da demanda
+            <input name="title" type="text" required maxlength="120" autocomplete="off" placeholder="Ex.: Elaborar resumo de boletim público demonstrativo">
+          </label>
+          <label class="field">Unidade solicitante
+            <input name="unit" type="text" required maxlength="80" autocomplete="off" placeholder="Ex.: Unidade Administrativa A">
+          </label>
+          <label class="field">Função do responsável
+            <input name="responsibleRole" type="text" required maxlength="80" autocomplete="off" placeholder="Ex.: Analista responsável">
+          </label>
+          <label class="field">Processo de trabalho
+            <input name="process" type="text" required maxlength="120" autocomplete="off" placeholder="Ex.: Transparência e atendimento">
+          </label>
+          <div class="form-section-title field-wide"><span>02</span><div><strong>Contexto de uso da IA</strong><small>Dados, ambiente e nível de autonomia pretendido</small></div></div>
+          <label class="field">Origem das informações
+            <input name="source" type="text" required maxlength="120" autocomplete="off" placeholder="Ex.: Portal público demonstrativo">
           </label>
           <label class="field">Tipo de dado
             <select name="data" required>
@@ -137,17 +156,39 @@
               <option value="Crítica">Crítica</option>
             </select>
           </label>
-          <label class="field field-wide">Justificativa didática
-            <textarea name="justification" required maxlength="500" rows="3" placeholder="Explique por que este cenário fictício deve ser analisado."></textarea>
+          <label class="field">Impacto de eventual erro
+            <select name="impact" required>
+              <option value="Baixo">Baixo — fácil correção</option>
+              <option value="Moderado">Moderado — afeta atividade interna</option>
+              <option value="Alto">Alto — pode afetar serviço ou decisão</option>
+              <option value="Crítico">Crítico — efeito jurídico, financeiro ou sobre direitos</option>
+            </select>
+          </label>
+          <label class="field">Revisão humana
+            <select name="humanReview" required>
+              <option value="Obrigatória">Obrigatória antes do uso</option>
+              <option value="Amostral">Amostral e documentada</option>
+              <option value="Não prevista">Não prevista</option>
+            </select>
+          </label>
+          <label class="field">Prazo desejado
+            <input name="deadline" type="date">
+          </label>
+          <div class="form-section-title field-wide"><span>03</span><div><strong>Justificativa e controles</strong><small>Condições que tornam a avaliação verificável</small></div></div>
+          <label class="field field-wide">Finalidade e justificativa
+            <textarea name="justification" required maxlength="500" rows="3" placeholder="Explique a finalidade, o resultado esperado e por que a demanda deve ser analisada."></textarea>
+          </label>
+          <label class="field field-wide">Controles já existentes
+            <textarea name="controls" required maxlength="500" rows="3" placeholder="Ex.: acesso restrito, revisão humana, anonimização e registro da decisão."></textarea>
           </label>
           <label class="synthetic-check field-wide">
             <input name="synthetic" type="checkbox" value="sim" required>
-            Confirmo que este cadastro contém somente informações fictícias, sem dados pessoais, credenciais ou documentos reais.
+            Confirmo que este cadastro é demonstrativo e não contém nomes de pessoas, dados pessoais, credenciais, documentos restritos ou informações reais.
           </label>
           <div class="form-actions field-wide">
             <button class="primary-button" type="submit">Cadastrar cenário</button>
             <button id="limpar-cadastros" class="secondary-button" type="button">Apagar cenários locais</button>
-            <span class="review-note">Revisão humana simulada disponível na seção de auditoria.</span>
+            <span class="review-note">O sistema gera uma recomendação explicável; a decisão institucional permanece humana.</span>
           </div>
         </form>
         <p id="form-feedback" class="feedback" role="status" aria-live="polite"></p>
@@ -157,9 +198,9 @@
         <div class="section-heading">
           <div>
             <p class="section-kicker">Biblioteca de casos</p>
-            <h2 id="titulo-cenarios">Oito situações para explorar</h2>
+            <h2 id="titulo-cenarios">Matriz de demandas e decisões</h2>
           </div>
-          <p>Decisões explicáveis calculadas pelas regras didáticas R1–R5</p>
+          <p>Cenários realistas e demonstrativos avaliados pelas regras R1–R5</p>
         </div>
 
         <div class="filters" aria-label="Busca e filtros de cenários">
@@ -188,16 +229,23 @@
         </div>
         <p id="resumo-resultados" class="result-summary" aria-live="polite"></p>
 
-        <div class="table-wrap" tabindex="0" aria-label="Tabela rolável de cenários fictícios">
+        <div class="decision-guide" aria-label="Como interpretar as decisões">
+          <article class="guide-allow"><strong>Permitido</strong><span>Baixo risco no contexto informado, mantendo revisão adequada.</span></article>
+          <article class="guide-condition"><strong>Exige condições</strong><span>Depende de controles, autorização e supervisão antes do uso.</span></article>
+          <article class="guide-deny"><strong>Não autorizado</strong><span>Risco incompatível; a solicitação deve permanecer bloqueada.</span></article>
+        </div>
+
+        <div class="table-wrap" tabindex="0" aria-label="Tabela rolável de demandas demonstrativas">
           <table>
             <thead>
               <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Cenário</th>
+                <th scope="col">Unidade</th>
                 <th scope="col">Dados</th>
                 <th scope="col">Ambiente</th>
                 <th scope="col">Autonomia</th>
-                <th scope="col">Situação didática</th>
+                <th scope="col">Risco e decisão</th>
               </tr>
             </thead>
             <tbody id="cenario-rows"></tbody>
@@ -209,7 +257,7 @@
         <div class="section-heading">
           <div>
             <p class="section-kicker">Trilha de controle</p>
-            <h2 id="titulo-revisao">Revisão humana e evidências</h2>
+            <h2 id="titulo-revisao">Revisão humana e plano de controles</h2>
           </div>
           <p>A decisão humana é registrada sem sobrescrever a política</p>
         </div>
@@ -217,18 +265,30 @@
           <label class="field field-wide">Cenário
             <select id="review-scenario" name="scenario" required></select>
           </label>
+          <label class="field">Função do revisor
+            <input name="reviewerRole" type="text" required maxlength="80" autocomplete="off" placeholder="Ex.: Gestor responsável">
+          </label>
           <label class="field">Decisão humana simulada
             <select name="humanDecision" required>
               <option value="aprovado">Aprovar uso simulado</option>
               <option value="rejeitado">Rejeitar uso simulado</option>
             </select>
           </label>
+          <label class="field">Controles verificados
+            <select name="controlsConfirmed" required>
+              <option value="sim">Sim, controles demonstrativos verificados</option>
+              <option value="nao">Não, existem pendências</option>
+            </select>
+          </label>
           <label class="field field-wide">Justificativa da revisão
             <textarea name="reviewJustification" required maxlength="500" rows="3" placeholder="Registre a justificativa da decisão humana simulada."></textarea>
           </label>
+          <label class="field field-wide">Pendências e providências
+            <textarea name="pendingActions" required maxlength="500" rows="3" placeholder="Registre condições, ajustes ou evidências necessárias antes do uso."></textarea>
+          </label>
           <div class="form-actions field-wide">
             <button class="primary-button" type="submit">Registrar revisão</button>
-            <span class="review-note">Cenários não autorizados nunca podem ser aprovados.</span>
+            <span class="review-note">Cenários não autorizados nunca podem ser aprovados. Demandas condicionadas exigem controles confirmados.</span>
           </div>
         </form>
         <p id="review-feedback" class="feedback" role="status" aria-live="polite"></p>
@@ -256,7 +316,7 @@
             <ul>
               <li>Navegação por seções.</li>
               <li>Dashboard responsivo.</li>
-              <li>Oito cenários exclusivamente fictícios.</li>
+              <li>Oito cenários institucionais realistas com dados demonstrativos.</li>
               <li>Motor de decisão único e testado automaticamente.</li>
               <li>Cadastro sintético, busca, filtros e persistência local.</li>
               <li>Revisão humana simulada, auditoria e exportações.</li>
@@ -270,13 +330,13 @@
           <article>
             <h3>Estado da entrega</h3>
             <ul>
-              <li>M10 concluído: produção publicada após autorização específica, sem dados reais.</li>
+              <li>M11: fluxo institucional demonstrativo com cadastro, risco, controles, revisão e relatório.</li>
             </ul>
           </article>
         </div>
       </section>
 
-      <footer><strong>NexoGov IA</strong> · Laboratório educacional de governança · Somente dados fictícios</footer>
+      <footer><strong>NexoGov IA</strong> · Demonstração de governança institucional · Somente dados demonstrativos</footer>
     </main>
   </div>
 

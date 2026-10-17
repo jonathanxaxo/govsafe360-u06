@@ -27,8 +27,8 @@
     }
   }
 
-  function resultado(status, motivo, regra) {
-    return Object.freeze({ status, label: ROTULOS[status], motivo, regra });
+  function resultado(status, motivo, regra, risco, controles) {
+    return Object.freeze({ status, label: ROTULOS[status], motivo, regra, risco, controles: Object.freeze(controles) });
   }
 
   function avaliar(entrada) {
@@ -44,7 +44,9 @@
       return resultado(
         'nao-autorizado',
         'Credenciais, dados pessoais e ações críticas ficam fora do piloto.',
-        'R1'
+        'R1',
+        'Crítico',
+        ['Interromper a solicitação', 'Remover dados sensíveis', 'Submeter o caso à autoridade competente']
       );
     }
 
@@ -52,7 +54,9 @@
       return resultado(
         'nao-autorizado',
         'Edição ou execução em produção não é autorizada neste exercício.',
-        'R2'
+        'R2',
+        'Crítico',
+        ['Bloquear execução automática', 'Exigir segregação de funções', 'Definir plano de reversão e autorização formal']
       );
     }
 
@@ -60,7 +64,9 @@
       return resultado(
         'condicionado',
         'Em produção, leitura e proposta exigem revisão e controles prévios.',
-        'R3'
+        'R3',
+        'Alto',
+        ['Confirmar ambiente homologado', 'Registrar revisão humana', 'Limitar o acesso ao mínimo necessário']
       );
     }
 
@@ -74,14 +80,18 @@
       return resultado(
         'condicionado',
         'O cenário exige supervisão humana e condições de segurança definidas.',
-        'R4'
+        'R4',
+        'Moderado',
+        ['Definir finalidade e responsável', 'Aplicar minimização dos dados', 'Documentar revisão e evidências']
       );
     }
 
     return resultado(
       'permitido',
       'Dados públicos em desenvolvimento, apenas para leitura ou proposta didática.',
-      'R5'
+      'R5',
+      'Baixo',
+      ['Manter conferência humana', 'Registrar a finalidade', 'Não incluir informações restritas']
     );
   }
 
